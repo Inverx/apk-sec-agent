@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+/*
+ * APK-SecAgent 设计令牌 — 浅色表面体系。
+ * 层级语义：ink-950=侧栏/表头、ink-900=页面底、ink-800=卡片表面、
+ * ink-700=悬停/凹陷、ink-600=描边/滑块；paper 为三级文字色；
+ * accent 仅用于选择态与关键数字，严重度色仅承载语义。
+ */
+@theme {
+  --color-ink-950: #f1f5f9;
+  --color-ink-900: #f8fafc;
+  --color-ink-800: #ffffff;
+  --color-ink-700: #e2e8f0;
+  --color-ink-600: #cbd5e1;
+
+  --color-paper: #0f172a;
+  --color-paper-2: #475569;
+  --color-paper-3: #64748b;
+
+  --color-accent: #0d9488;
+  --color-accent-dim: #0f766e;
+
+  --color-sev-critical: #dc2626;
+  --color-sev-high: #ea580c;
+  --color-sev-medium: #b45309;
+  --color-sev-low: #16a34a;
+
+  --font-sans:
+    "Segoe UI", "PingFang SC", "Microsoft YaHei", system-ui, -apple-system,
+    sans-serif;
+  --font-mono:
+    "JetBrains Mono", "Cascadia Code", "Sarasa Term SC", Consolas,
+    "Courier New", monospace;
+
+  --radius-card: 12px;
+  --radius-panel: 14px;
+  --radius-control: 8px;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-ink-900);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* surfaces */
+@utility card {
+  background-color: var(--color-ink-800);
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-card);
+  box-shadow: 0 1px 2px rgb(15 23 42 / 0.05);
+}
+
+@utility hairline {
+  border-color: #e2e8f0;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
+/* number columns use tabular figures everywhere */
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+::selection {
+  background: rgb(13 148 136 / 0.2);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-ink-600);
+  border-radius: 5px;
+  border: 2px solid var(--color-ink-900);
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+button,
+a {
+  transition:
+    background-color 150ms var(--ease-out-soft),
+    border-color 150ms var(--ease-out-soft),
+    color 150ms var(--ease-out-soft),
+    opacity 150ms var(--ease-out-soft),
+    transform 120ms var(--ease-out-soft);
+}
+button:active {
+  transform: scale(0.98);
+}
